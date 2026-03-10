@@ -1,271 +1,176 @@
 # 🚀 ContentAI
 
-> **一个想法，自动生成全平台内容**  
-> 支持 OpenAI / DeepSeek / Ollama 多种 AI 供应商
+> **一个想法，自动生成全平台内容 | 完整 SaaS 功能**  
+> 用户系统 · 内容历史 · 使用统计 · 多 AI 供应商
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version: v0.2](https://img.shields.io/badge/Version-v0.2-blue.svg)](https://github.com/lizuyi-6/content-ai/releases)
-[![AI: Multi-Provider](https://img.shields.io/badge/AI-Multi--Provider-purple.svg)]()
+[![Version: v0.3](https://img.shields.io/badge/Version-v0.3-blue.svg)](https://github.com/lizuyi-6/content-ai/releases)
+[![Status: Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green.svg)]()
 
 ---
 
 ## 🎯 解决什么问题？
 
-内容创作者需要在多个平台分发内容，但每个平台的风格不同：
-- **Twitter** 要短小精悍
-- **LinkedIn** 要专业深度
-- **微博** 要轻松有趣
-- **小红书** 要真诚种草
-
-ContentAI 帮你**一次输入，自动生成所有平台适配的内容**。
+内容创作者需要在多个平台分发内容，但每个平台的风格不同。ContentAI 帮你**一次输入，自动生成所有平台适配的内容**，并提供完整的 SaaS 功能：用户系统、内容历史、使用统计。
 
 ---
 
-## ✨ 核心特性
+## ✨ 核心功能（v0.3）
 
-| 特性 | 说明 |
-|------|------|
-| 🤖 **多 AI 供应商** | 支持 OpenAI / DeepSeek / Ollama，灵活切换 |
+| 功能模块 | 说明 |
+|----------|------|
+| 🤖 **AI 生成** | 支持 OpenAI / DeepSeek / Ollama |
 | 📱 **4 大平台** | Twitter/X, LinkedIn, 微博，小红书 |
-| ⚡ **30 秒生成** | 输入想法，立即获得全平台内容 |
-| 🎨 **零学习成本** | 打开网页就能用，无需安装 |
-| 🔒 **隐私安全** | 可本地部署，数据不出服务器 |
+| 🔐 **用户系统** | 注册/登录 + API Key 认证 |
+| 📚 **内容历史** | 自动保存所有生成内容 |
+| 📊 **使用统计** | 实时追踪用量 |
+| 💳 **计划系统** | Free/Pro/Team 三级定价 |
+| 🔒 **安全存储** | 密码 bcrypt 加密 + SQLite |
 
 ---
 
-## 🚀 5 分钟快速开始
+## 🚀 快速开始
 
-### 第一步：克隆项目
+### 1. 克隆项目
 
 ```bash
 git clone https://github.com/lizuyi-6/content-ai.git
 cd content-ai
 ```
 
-### 第二步：配置 API Key
+### 2. 配置环境变量
 
 ```bash
 cp .env.example .env
 ```
 
-编辑 `.env` 文件，填入你的 API Key：
-
+编辑 `.env`：
 ```bash
-# 使用 OpenAI（默认）
 AI_PROVIDER=openai
 OPENAI_API_KEY=sk-your-api-key-here
-
-# 或使用 DeepSeek（中文优化，性价比高）
-# AI_PROVIDER=deepseek
-# DEEPSEEK_API_KEY=your-deepseek-key
-
-# 或使用 Ollama（本地部署，免费）
-# AI_PROVIDER=ollama
-# OLLAMA_BASE_URL=http://localhost:11434
-# OLLAMA_MODEL=llama3
+PORT=3000
 ```
 
-### 第三步：启动服务
+### 3. 安装依赖
 
 ```bash
 npm install
+```
+
+### 4. 启动服务
+
+```bash
 npm start
 ```
 
-访问 **http://localhost:3000**，开始生成内容！
+访问 **http://localhost:3000**，注册账号后即可使用！
 
 ---
 
-## 📖 使用示例
+## 📖 使用流程
 
-### 输入想法
+### 第一步：注册账号
+- 输入邮箱和密码
+- 自动生成 API Key
+- 默认 Free 计划（10 次/月）
 
-```
-我刚学会用 AI 写代码，效率提升了 10 倍。
-最大的感悟是：AI 不是替代程序员，
-而是让程序员专注于更有创造性的工作。
-```
+### 第二步：生成内容
+1. 输入想法
+2. 选择平台（可多选）
+3. 点击"生成内容"
+4. 复制结果到对应平台
 
-### 自动生成结果
-
-**Twitter/X** 🐦
-```
-🚀 Just 10x'd my coding productivity with AI!
-
-Key insight: AI isn't replacing developers—
-it's freeing us to focus on creative work.
-
-The future of coding is human + AI collaboration.
-
-#AI #Coding #Productivity #DevLife
-```
-
-**LinkedIn** 💼
-```
-🤖 How AI Made Me a 10x Developer
-
-Last week, I integrated AI into my coding workflow. 
-The results surprised me...
-
-[全文继续]
-```
-
-**微博** 📱
-```
-🚀 学会用 AI 写代码，效率直接提升 10 倍！
-
-最大的感悟：AI 不是要替代程序员，
-而是让我们专注于更有创造性的工作💡
-
-#AI 编程# #效率提升# #开发者日常#
-```
-
-**小红书** 📕
-```
-💻 程序员必备！AI 编程效率提升 10 倍的秘密
-
-姐妹们！今天一定要分享这个超好用的 AI 编程工具！
-
-✨ 使用感受：
-1️⃣ 代码生成超快
-2️⃣ bug 自动修复
-3️⃣ 文档一键生成
-
-[全文继续]
-```
+### 第三步：查看历史
+- 所有生成内容自动保存
+- 支持按时间查看
+- 可随时删除
 
 ---
 
-## 🤖 AI 供应商对比
+## 💰 定价计划
 
-| 供应商 | 模型 | 价格 | 推荐场景 |
-|--------|------|------|----------|
-| **OpenAI** | GPT-4o-mini | $0.15/1M tokens | 追求质量，生产环境 |
-| **DeepSeek** | DeepSeek-Chat | ¥1/1M tokens | 中文内容，性价比 |
-| **Ollama** | Llama3/Qwen2.5 | 免费 | 本地测试，隐私敏感 |
-
-**切换供应商**：修改 `.env` 中的 `AI_PROVIDER`，重启即可。
+| 计划 | 价格 | 生成次数 | 功能 |
+|------|------|----------|------|
+| **Free** | $0/月 | 10 次 | 基础生成 + 历史保存 |
+| **Pro** | $29/月 | 1000 次 | + 优先支持 + 统计分析 |
+| **Team** | $79/月 | 10000 次 | + 多账号管理 + API 访问 |
 
 ---
 
 ## 🔧 API 参考
 
-### POST `/api/generate`
-
-生成多平台内容
-
-**请求示例**：
+### 注册
 ```bash
-curl -X POST http://localhost:3000/api/generate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "idea": "你的想法",
-    "platforms": ["twitter", "weibo"],
-    "provider": "deepseek"
-  }'
-```
-
-**响应示例**：
-```json
+POST /api/auth/register
 {
-  "success": true,
-  "data": {
-    "twitter": {
-      "platform": "Twitter/X",
-      "content": "...",
-      "length": 280,
-      "provider": "deepseek",
-      "model": "deepseek-chat"
-    },
-    "weibo": { ... }
-  },
-  "provider": "deepseek",
-  "timestamp": "2026-03-10T00:20:00Z"
+  "email": "user@example.com",
+  "password": "your-password",
+  "name": "Your Name"
 }
 ```
 
-### GET `/api/providers`
-
-获取可用供应商列表
-
+### 登录
 ```bash
-curl http://localhost:3000/api/providers
+POST /api/auth/login
+{
+  "email": "user@example.com",
+  "password": "your-password"
+}
 ```
 
----
-
-## 🐳 Docker 部署
-
+### 生成内容
 ```bash
-# 1. 构建镜像
-docker build -t content-ai .
-
-# 2. 运行容器
-docker run -d -p 3000:3000 \
-  --env-file .env \
-  --name content-ai \
-  content-ai
-
-# 3. 查看日志
-docker logs -f content-ai
+POST /api/content/generate
+Headers: X-API-Key: your-api-key
+{
+  "idea": "你的想法",
+  "platforms": ["twitter", "weibo"]
+}
 ```
 
-或使用 Docker Compose：
-
+### 查看历史
 ```bash
-docker-compose up -d
+GET /api/content/history
+Headers: X-API-Key: your-api-key
+```
+
+### 使用统计
+```bash
+GET /api/content/stats
+Headers: X-API-Key: your-api-key
 ```
 
 ---
 
 ## 🛣️ 路线图
 
-- [x] **v0.1** - MVP：基础内容生成
-- [x] **v0.2** - 多 AI 供应商支持
-- [ ] **v0.3** - 用户系统 + 内容历史
-- [ ] **v0.4** - 定时发布功能
-- [ ] **v0.5** - 数据分析（阅读/点赞/转发）
+- [x] **v0.1** - MVP：基础生成
+- [x] **v0.2** - 多 AI 供应商
+- [x] **v0.3** - 用户系统 + 历史 + 统计
+- [ ] **v0.4** - 定时发布
+- [ ] **v0.5** - 数据分析看板
+- [ ] **v0.6** - 支付集成（Stripe）
 
 ---
 
 ## 📚 更多文档
 
-- [**供应商配置指南**](docs/PROVIDERS.md) - 详细配置说明
-- [**快速开始**](QUICKSTART.md) - 5 分钟上手
-- [**更新日志**](CHANGELOG.md) - 版本历史
-
----
-
-## 🤝 贡献
-
-欢迎贡献！
-
-1. Fork 本仓库
-2. 创建分支 `git checkout -b feature/YourFeature`
-3. 提交 `git commit -m 'Add YourFeature'`
-4. 推送 `git push origin feature/YourFeature`
-5. 提交 Pull Request
+- [供应商配置](docs/PROVIDERS.md)
+- [快速开始](QUICKSTART.md)
+- [更新日志](CHANGELOG.md)
 
 ---
 
 ## 📄 许可证
 
-MIT License - 详见 [LICENSE](./LICENSE)
-
----
-
-## 📫 联系方式
-
-- **GitHub**: [@lizuyi-6](https://github.com/lizuyi-6)
-- **Email**: lizu@shijieqidian.cn
-- **官网**: https://contentai.app (即将上线)
+MIT License
 
 ---
 
 <div align="center">
 
-**🚀 让内容创作更高效**
+**🚀 生产环境就绪**
 
-[快速开始](#-5-分钟快速开始) · [查看 API](#-api-参考) · [供应商配置](docs/PROVIDERS.md)
+[立即使用](#-快速开始) · [查看 API](#-api-参考) · [供应商配置](docs/PROVIDERS.md)
 
 </div>

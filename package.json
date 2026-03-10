@@ -1,31 +1,24 @@
 {
   "name": "content-ai",
-  "version": "0.1.0",
-  "description": "AI-powered multi-platform content generator",
+  "version": "0.3.0",
+  "description": "AI-powered multi-platform content generator with user system",
   "main": "server/index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "nodemon server/index.js",
-    "dev:client": "vite",
-    "build": "vite build",
+    "dev": "nodemon server/index.js",
     "start": "node server/index.js",
-    "preview": "vite preview"
+    "build": "echo 'Frontend build placeholder'",
+    "test": "node test-providers.sh"
   },
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "openai": "^4.20.1",
-    "node-cron": "^3.0.3",
+    "bcryptjs": "^2.4.3",
     "better-sqlite3": "^9.2.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.0.2",
-    "vite": "^5.0.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "nodemon": "^3.0.2"
   },
   "keywords": ["ai", "content", "social-media", "automation"],
   "author": "李祖祎",
