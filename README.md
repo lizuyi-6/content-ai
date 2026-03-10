@@ -1,130 +1,171 @@
 # 🚀 ContentAI
 
-**一个想法，自动生成多平台内容 | 支持多 AI 供应商**
+> **一个想法，自动生成全平台内容**  
+> 支持 OpenAI / DeepSeek / Ollama 多种 AI 供应商
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status: MVP](https://img.shields.io/badge/Status-MVP-green.svg)]()
-[![AI: Multi-Provider](https://img.shields.io/badge/AI-Multi-Provider-purple.svg)]()()
+[![Version: v0.2](https://img.shields.io/badge/Version-v0.2-blue.svg)](https://github.com/lizuyi-6/content-ai/releases)
+[![AI: Multi-Provider](https://img.shields.io/badge/AI-Multi--Provider-purple.svg)]()
 
 ---
 
-## ✨ 功能特性
+## 🎯 解决什么问题？
 
-- 🤖 **AI 驱动** - 基于 GPT-4 自动生成内容
-- 📱 **多平台支持** - Twitter/X, LinkedIn, 微博，小红书
-- ⚡ **快速生成** - 30 秒内生成所有平台内容
-- 📋 **一键复制** - 轻松复制内容到剪贴板
-- 🎨 **简洁界面** - 无需学习成本，打开即用
+内容创作者需要在多个平台分发内容，但每个平台的风格不同：
+- **Twitter** 要短小精悍
+- **LinkedIn** 要专业深度
+- **微博** 要轻松有趣
+- **小红书** 要真诚种草
 
----
-
-## 🎯 使用场景
-
-1. **内容创作者** - 一次创作，多平台分发
-2. **创业者** - 快速建立个人品牌
-3. **营销团队** - 提高内容生产效率
-4. **开发者** - 分享技术洞察
+ContentAI 帮你**一次输入，自动生成所有平台适配的内容**。
 
 ---
 
-## 🚀 快速开始
+## ✨ 核心特性
 
-### 本地开发
+| 特性 | 说明 |
+|------|------|
+| 🤖 **多 AI 供应商** | 支持 OpenAI / DeepSeek / Ollama，灵活切换 |
+| 📱 **4 大平台** | Twitter/X, LinkedIn, 微博，小红书 |
+| ⚡ **30 秒生成** | 输入想法，立即获得全平台内容 |
+| 🎨 **零学习成本** | 打开网页就能用，无需安装 |
+| 🔒 **隐私安全** | 可本地部署，数据不出服务器 |
+
+---
+
+## 🚀 5 分钟快速开始
+
+### 第一步：克隆项目
 
 ```bash
-# 1. 克隆仓库
 git clone https://github.com/lizuyi-6/content-ai.git
 cd content-ai
-
-# 2. 安装依赖
-npm install
-
-# 3. 配置环境变量
-cp .env.example .env
-# 编辑 .env 文件，填入 OpenAI API Key
-
-# 4. 启动开发服务器
-npm run dev
-
-# 5. 访问 http://localhost:5173
 ```
 
-### 生产部署
+### 第二步：配置 API Key
 
 ```bash
-# 1. 构建前端
-npm run build
-
-# 2. 启动服务器
-npm start
-
-# 3. 访问 http://localhost:3000
+cp .env.example .env
 ```
 
----
+编辑 `.env` 文件，填入你的 API Key：
 
-## 📦 技术栈
+```bash
+# 使用 OpenAI（默认）
+AI_PROVIDER=openai
+OPENAI_API_KEY=sk-your-api-key-here
 
-**Backend**:
-- Node.js + Express
-- OpenAI API
-- SQLite (可选，用于存储历史)
+# 或使用 DeepSeek（中文优化，性价比高）
+# AI_PROVIDER=deepseek
+# DEEPSEEK_API_KEY=your-deepseek-key
 
-**Frontend**:
-- React 18
-- TailwindCSS
-- Vite
+# 或使用 Ollama（本地部署，免费）
+# AI_PROVIDER=ollama
+# OLLAMA_BASE_URL=http://localhost:11434
+# OLLAMA_MODEL=llama3
+```
 
-**部署**:
-- Docker (即将支持)
-- Railway / Vercel
-- PM2
+### 第三步：启动服务
 
----
+```bash
+npm install
+npm start
+```
 
-## 💰 定价计划
-
-| 计划 | 价格 | 功能 |
-|------|------|------|
-| **Free** | $0/月 | 每月 10 次生成 |
-| **Pro** | $29/月 | 无限生成 + 定时发布 |
-| **Team** | $79/月 | 多账号管理 + 数据分析 |
+访问 **http://localhost:3000**，开始生成内容！
 
 ---
 
-## 📸 使用示例
+## 📖 使用示例
 
 ### 输入想法
+
 ```
-我刚读完《原子习惯》，这本书教会我：
-1. 每天进步 1%，一年后进步 37 倍
-2. 关注系统而非目标
-3. 习惯养成需要身份认同
+我刚学会用 AI 写代码，效率提升了 10 倍。
+最大的感悟是：AI 不是替代程序员，
+而是让程序员专注于更有创造性的工作。
 ```
 
-### 自动生成
-- ✅ Twitter 线程（3 条）
-- ✅ LinkedIn 长文（专业深度）
-- ✅ 微博文案（140 字）
-- ✅ 小红书笔记（emoji + 标签）
+### 自动生成结果
+
+**Twitter/X** 🐦
+```
+🚀 Just 10x'd my coding productivity with AI!
+
+Key insight: AI isn't replacing developers—
+it's freeing us to focus on creative work.
+
+The future of coding is human + AI collaboration.
+
+#AI #Coding #Productivity #DevLife
+```
+
+**LinkedIn** 💼
+```
+🤖 How AI Made Me a 10x Developer
+
+Last week, I integrated AI into my coding workflow. 
+The results surprised me...
+
+[全文继续]
+```
+
+**微博** 📱
+```
+🚀 学会用 AI 写代码，效率直接提升 10 倍！
+
+最大的感悟：AI 不是要替代程序员，
+而是让我们专注于更有创造性的工作💡
+
+#AI 编程# #效率提升# #开发者日常#
+```
+
+**小红书** 📕
+```
+💻 程序员必备！AI 编程效率提升 10 倍的秘密
+
+姐妹们！今天一定要分享这个超好用的 AI 编程工具！
+
+✨ 使用感受：
+1️⃣ 代码生成超快
+2️⃣ bug 自动修复
+3️⃣ 文档一键生成
+
+[全文继续]
+```
+
+---
+
+## 🤖 AI 供应商对比
+
+| 供应商 | 模型 | 价格 | 推荐场景 |
+|--------|------|------|----------|
+| **OpenAI** | GPT-4o-mini | $0.15/1M tokens | 追求质量，生产环境 |
+| **DeepSeek** | DeepSeek-Chat | ¥1/1M tokens | 中文内容，性价比 |
+| **Ollama** | Llama3/Qwen2.5 | 免费 | 本地测试，隐私敏感 |
+
+**切换供应商**：修改 `.env` 中的 `AI_PROVIDER`，重启即可。
 
 ---
 
 ## 🔧 API 参考
 
-### POST /api/generate
+### POST `/api/generate`
 
 生成多平台内容
 
-**请求体**:
-```json
-{
-  "idea": "你的想法",
-  "platforms": ["twitter", "linkedin", "weibo", "xiaohongshu"]
-}
+**请求示例**：
+```bash
+curl -X POST http://localhost:3000/api/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "idea": "你的想法",
+    "platforms": ["twitter", "weibo"],
+    "provider": "deepseek"
+  }'
 ```
 
-**响应**:
+**响应示例**：
 ```json
 {
   "success": true,
@@ -132,48 +173,78 @@ npm start
     "twitter": {
       "platform": "Twitter/X",
       "content": "...",
-      "length": 280
+      "length": 280,
+      "provider": "deepseek",
+      "model": "deepseek-chat"
     },
-    "linkedin": { ... },
-    "weibo": { ... },
-    "xiaohongshu": { ... }
+    "weibo": { ... }
   },
-  "timestamp": "2026-03-10T00:00:00Z"
+  "provider": "deepseek",
+  "timestamp": "2026-03-10T00:20:00Z"
 }
+```
+
+### GET `/api/providers`
+
+获取可用供应商列表
+
+```bash
+curl http://localhost:3000/api/providers
+```
+
+---
+
+## 🐳 Docker 部署
+
+```bash
+# 1. 构建镜像
+docker build -t content-ai .
+
+# 2. 运行容器
+docker run -d -p 3000:3000 \
+  --env-file .env \
+  --name content-ai \
+  content-ai
+
+# 3. 查看日志
+docker logs -f content-ai
+```
+
+或使用 Docker Compose：
+
+```bash
+docker-compose up -d
 ```
 
 ---
 
 ## 🛣️ 路线图
 
-### v0.1 (MVP) ✅
-- [x] 基础内容生成
-- [x] 4 个平台支持
-- [x] 简洁 UI
+- [x] **v0.1** - MVP：基础内容生成
+- [x] **v0.2** - 多 AI 供应商支持
+- [ ] **v0.3** - 用户系统 + 内容历史
+- [ ] **v0.4** - 定时发布功能
+- [ ] **v0.5** - 数据分析（阅读/点赞/转发）
 
-### v0.2 (Next)
-- [ ] 用户系统 + 登录
-- [ ] 内容历史保存
-- [ ] 定时发布功能
-- [ ] 更多平台（Facebook, Instagram）
+---
 
-### v0.3
-- [ ] 数据分析（阅读/点赞/转发）
-- [ ] A/B 测试
-- [ ] 团队协作
-- [ ] API 开放
+## 📚 更多文档
+
+- [**供应商配置指南**](docs/PROVIDERS.md) - 详细配置说明
+- [**快速开始**](QUICKSTART.md) - 5 分钟上手
+- [**更新日志**](CHANGELOG.md) - 版本历史
 
 ---
 
 ## 🤝 贡献
 
-欢迎贡献代码、报告问题、提出建议！
+欢迎贡献！
 
 1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
+2. 创建分支 `git checkout -b feature/YourFeature`
+3. 提交 `git commit -m 'Add YourFeature'`
+4. 推送 `git push origin feature/YourFeature`
+5. 提交 Pull Request
 
 ---
 
@@ -195,6 +266,6 @@ MIT License - 详见 [LICENSE](./LICENSE)
 
 **🚀 让内容创作更高效**
 
-[开始使用](#-快速开始) · [查看 API](#-api-参考) · [贡献代码](#-贡献)
+[快速开始](#-5-分钟快速开始) · [查看 API](#-api-参考) · [供应商配置](docs/PROVIDERS.md)
 
 </div>
