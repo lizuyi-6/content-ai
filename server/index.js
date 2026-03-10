@@ -50,6 +50,6 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 ContentAI Server v0.3.0 running on http://localhost:${PORT}`);
-  console.log(`🤖 AI Provider: ${process.env.AI_PROVIDER || 'openai'}`);
+  console.log(`🤖 AI Provider: ${process.env.AI_PROVIDER || 'qwen'}`);
   console.log(`💾 Database: ${dataDir}/contentai.db`);
 });

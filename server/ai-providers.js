@@ -6,9 +6,11 @@ class AIProviderManager {
       openai: new OpenAIProvider(),
       deepseek: new DeepSeekProvider(),
       ollama: new OllamaProvider(),
-      custom: new CustomProvider()
+      custom: new CustomProvider(),
+      qwen: new QwenProvider(),
+      glm: new GLMProvider()
     };
-    this.defaultProvider = process.env.AI_PROVIDER || 'openai';
+    this.defaultProvider = process.env.AI_PROVIDER || 'qwen';
   }
 
   getProvider(name = this.defaultProvider) {
@@ -282,3 +284,99 @@ class CustomProvider {
 }
 
 module.exports = AIProviderManager;
+
+// ========== Qwen 供应商（通义千问） ==========
+class QwenProvider {
+  constructor() {
+    this.name = 'Qwen（通义千问）';
+    this.description = '阿里云通义千问，中文优化';
+    this.baseUrl = 'https://dashscope.aliyuncs.com/api/v1';
+    this.apiKey = process.env.QWEN_API_KEY;
+    this.model = process.env.QWEN_MODEL || 'qwen-plus';
+  }
+
+  isAvailable() {
+    return !!this.apiKey && this.apiKey !== 'sk-demo-key';
+  }
+
+  async generate(prompt, options) {
+    const response = await fetch(`${this.baseUrl}/services/aigc/text-generation/generation`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.apiKey}`
+      },
+      body: JSON.stringify({
+        model: this.model,
+        input: {
+          messages: [
+            {
+              role: 'system',
+              content: `你是专业的${options.platform}内容创作者。`
+            },
+            { role: 'user', content: prompt }
+          ]
+        },
+        parameters: {
+          max_tokens: options.maxLength,
+          temperature: options.temperature
+        }
+      })
+    });
+
+    const data = await response.json();
+    
+    return {
+      content: data.output?.text || '',
+      provider: 'qwen',
+      model: this.model,
+      usage: data.usage || {}
+    };
+  }
+}
+
+// ========== GLM 供应商（智谱 AI） ==========
+class GLMProvider {
+  constructor() {
+    this.name = 'GLM（智谱 AI）';
+    this.description = '智谱 AI GLM-4/GLM-5，中文最强';
+    this.baseUrl = 'https://open.bigmodel.cn/api/paas/v4';
+    this.apiKey = process.env.GLM_API_KEY;
+    this.model = process.env.GLM_MODEL || 'glm-4';
+  }
+
+  isAvailable() {
+    return !!this.apiKey && this.apiKey !== 'sk-demo-key';
+  }
+
+  async generate(prompt, options) {
+    const response = await fetch(`${this.baseUrl}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.apiKey}`
+      },
+      body: JSON.stringify({
+        model: this.model,
+        messages: [
+          {
+            role: 'system',
+            content: `你是专业的${options.platform}内容创作者。`
+          },
+          { role: 'user', content: prompt }
+        ],
+        max_tokens: options.maxLength,
+        temperature: options.temperature
+      })
+    });
+
+    const data = await response.json();
+    
+    return {
+      content: data.choices?.[0]?.message?.content || '',
+      provider: 'glm',
+      model: this.model,
+      usage: data.usage || {}
+    };
+  }
+}
