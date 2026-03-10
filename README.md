@@ -1,10 +1,10 @@
 # 🚀 ContentAI
 
-**一个想法，自动生成多平台内容**
+**一个想法，自动生成多平台内容 | 支持多 AI 供应商**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Status: MVP](https://img.shields.io/badge/Status-MVP-green.svg)]()
-[![AI: Powered](https://img.shields.io/badge/AI-Powered-purple.svg)]()
+[![AI: Multi-Provider](https://img.shields.io/badge/AI-Multi-Provider-purple.svg)]()()
 
 ---
 
